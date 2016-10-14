@@ -12,6 +12,7 @@ require('./config/routes.js')(app, express);
 
 // start listening to requests on port 8000
 app.listen(8000);
+console.log('server running on Port 8000');
 
 // export our app for testing and flexibility, required by index.js
 module.exports = app;

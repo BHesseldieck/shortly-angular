@@ -1,7 +1,41 @@
 angular.module('shortly.services', [])
 
 .factory('Links', function ($http) {
-  // Your code here
+  // Simple GET request example:
+  var getAll = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/links'
+    })
+    .then(function successCallback(response) {
+      return response.data;
+    }, function errorCallback(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      return response;
+    });
+  };
+
+  var addOne = function(urlObj) {
+    return $http({
+      method: 'POST',
+      url: '/api/links',
+      data: JSON.stringify(urlObj)
+    }).then(function successCallback(response) {
+        // this callback will be called asynchronously
+        // when the response is available
+      return response;
+    }, function errorCallback(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+      return response;
+    });
+  };
+
+  return {
+    getAll: getAll,
+    addOne: addOne
+  };
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
