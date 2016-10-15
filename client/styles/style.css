@@ -146,3 +146,11 @@ input[type=url]:focus {
   clear: both;
 }
 
+.has-error input {
+  border: solid red 5px;
+}
+
+.help-block {
+  color: red;
+}
+
