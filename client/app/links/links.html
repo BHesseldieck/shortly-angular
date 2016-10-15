@@ -6,4 +6,20 @@
   </ul>
     <!-- <a href='/logout' class='logout'>Logout</a> -->
   </div>
+  <div>
+    <div>
+      <input type="text" ng-model='filter' placeholder="filter for urls (Case sensitive)">
+      <p>{{filter}}</p>
+    </div>
+    <div ng-model='data' ng-repeat="link in data.links | orderBy: 'visits' : true | filter: filter" >
+    <!-- filter buggy looks into whole link object for the typed string/letter -->
+      <img src='../assets/redirect_icon.png'/>
+      <div class='info'>
+        <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
+        <div class='title'>{{link.title}}</div>
+        <div class='original'>{{link.url}}</div>
+        <a href='{{link.baseUrl}}/{{link.code}}'>{{link.baseUrl}}/{{link.code}}</a>
+      </div>    
+    </div>
+  </div>
 </div>

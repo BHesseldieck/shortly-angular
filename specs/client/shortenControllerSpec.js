@@ -44,7 +44,19 @@ describe('ShortenController', function () {
 
   it('should be able to create new links with addLink()', function () {
     $httpBackend.expectPOST('/api/links').respond(201, '');
+    $scope.link = {url: 'http://apple.com'};
     $scope.addLink();
     $httpBackend.flush();
+  });
+
+  it('should have a isValidUrl method on the $scope', function () {
+    expect($scope.isValidUrl).to.be.a('function');
+  });
+
+  it('should test if the Url is valid', function () {
+    $scope.link = {url: 'http://apple.com'};
+    expect($scope.isValidUrl).to.be.a(true);
+    $scope.link = {url: 'abcdefg'};
+    expect($scope.isValidUrl).to.be.a(false);
   });
 });

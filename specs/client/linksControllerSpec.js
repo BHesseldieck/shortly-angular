@@ -36,7 +36,6 @@ describe('LinksController', function () {
 
     createController();
     $httpBackend.flush();
-
     expect(Links.getAll.called).to.equal(true);
     Links.getAll.restore();
   });
@@ -50,4 +49,26 @@ describe('LinksController', function () {
 
     expect($scope.data.links).to.deep.equal(mockLinks);
   });
+
+  // it('should display links ordered by visits', function () {
+  //   var mockLinks = [{
+  //     "code" : "30849",
+  //     "url" : "http://apple.com",
+  //     "visits" : 2,
+  //     "baseUrl" : "http://localhost:8000",
+  //     "title" : "Apple",
+  //   }, {
+  //     "code" : "95990",
+  //     "url" : "http://bmw.com",
+  //     "visits" : 8,
+  //     "baseUrl" : "http://localhost:8000",
+  //     "title" : "BMW automobiles : BMW AG website",
+  //   }];
+  //   $httpBackend.expectGET('/api/links').respond(mockLinks);
+
+  //   createController();
+  //   $httpBackend.flush();
+
+  //   expect($scope.data.links).to.deep.equal(mockLinks.reverse());
+  // });
 });
