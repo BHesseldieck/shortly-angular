@@ -8,7 +8,9 @@ angular.module('shortly.shorten', [])
   $scope.link = {url: ''};
   $scope.addLink = function() {
     console.log('scope link: ', $scope.link);
-    Links.addOne($scope.link);
+    if ($scope.isValidUrl()) {
+      Links.addOne($scope.link);
+    }
     $scope.link.url = '';
   };
 

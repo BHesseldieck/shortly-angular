@@ -7,6 +7,11 @@ angular.module('shortly', [
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
+    // .when('/:url', { // Would also work instead of the if statement in run
+    //   templateUrl: 'app/links/links.html',
+    //   controller: 'LinksController',
+    //   authenticate: true
+    // })
     .when('/', {
       templateUrl: 'app/auth/signin.html',
       controller: 'AuthController'
