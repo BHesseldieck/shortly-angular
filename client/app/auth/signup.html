@@ -1,11 +1,11 @@
 <div id='signup'>
   <h1>signup</h1>
-  <form name="signupForm" ng-submit="signup(signupForm.$valid)" novalidate>
+  <form name="signupForm" ng-submit="ACtrl.signup(signupForm.$valid)" novalidate>
     <div ng-class="{ 'has-error' : signupForm.username.$invalid && !signupForm.username.$pristine }">
       <input 
         name='username'
         ng-maxlength = "4"
-        type='text' ng-model='user.username' required>
+        type='text' ng-model='ACtrl.user.username' required>
       <p ng-show="signupForm.username.$error.maxlength" class="help-block">Username is too long.</p>
 
     </div>
@@ -13,7 +13,7 @@
       <input 
       name="password"
       ng-maxlength = "5"
-      type="password" ng-model='user.password' required>
+      type="password" ng-model='ACtrl.user.password' required>
       <p ng-show="signupForm.password.$error.maxlength" class="help-block">Password is too long.</p>
     </div>
     <button ng-disabled="signupForm.$invalid">signup</button>

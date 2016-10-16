@@ -14,26 +14,36 @@ angular.module('shortly', [
     // })
     .when('/', {
       templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
+      controller: 'AuthController',
+      controllerAs: 'ACtrl',
     })
     .when('/signin', {
       templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
+      controller: 'AuthController',
+      controllerAs: 'ACtrl',
     })
     .when('/signup', {
       templateUrl: 'app/auth/signup.html',
-      controller: 'AuthController'
-    })
-    .when('/links', {
-      templateUrl: 'app/links/links.html',
-      controller: 'LinksController',
-      authenticate: true
+      controller: 'AuthController',
+      controllerAs: 'ACtrl',
     })
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
       controller: 'ShortenController',
+      controllerAs: 'SCtrl',
       authenticate: true
-    });
+    })
+    .when('/links', {
+      templateUrl: 'app/links/links.html',
+      controller: 'LinksController',
+      controllerAs: 'LCtrl',
+      authenticate: true,
+      resolve: {
+        resolveData: function(Links) {
+          return Links.getAll();
+        }
+      }
+    });  
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
   $httpProvider.interceptors.push('AttachTokens');

@@ -1,28 +1,25 @@
 angular.module('shortly.links', [])
 
-.controller('LinksController', function ($scope, Links) {
-  $scope.filter = ''.toLowerCase();
-  $scope.data = {
-    // filterFn: function() {
-    //   if ($scope.filter) {
-    //     return this.links.filter(function(ele) {
-    //       if (ele.title.toLowerCase().includes($scope.filter)) { 
-    //         return true; 
-    //       }
-    //     });
-    //   }
-    //   return this.links;
-    // }
-  };
+.controller('LinksController', function (Links, resolveData) {
+  // refactored with controllerAs in app.js and therefore can use pseudoclassical style for controllers
+  var LCtrl = this;
+  LCtrl.filter = '';
+  LCtrl.data = {links: resolveData};
 
-  Links.getAll().then(function(data) { // when does this get executed?
-    // if (data) {
-    //   data.sort(function(link1, link2) {
-    //     return link2.visits - link1.visits;
-    //   });
-    // }
+  // Links.getAll().then(function(data) { // when does this get executed?
+  //   // if (data) {
+  //   //   data.sort(function(link1, link2) {
+  //   //     return link2.visits - link1.visits;
+  //   //   });
+  //   // }
     
-    $scope.data.links = data;
-  });
+  //   $scope.data.links = data;
+  // });
 
+})
+.directive('shortenedLink', function() {
+  return {
+    restrict: 'E',
+    template: '<a href="{{link.baseUrl}}/{{link.code}}">{{link.baseUrl}}/{{link.code}}</a>'
+  };
 });

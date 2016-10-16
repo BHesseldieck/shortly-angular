@@ -6,9 +6,9 @@
   </ul>
  <!--    <a href='/logout' class='logout'>Logout</a> -->
   </div>
-  <form name='shortenForm' ng-submit="addLink()" novalidate>
+  <form name='shortenForm' ng-submit="SCtrl.addLink()" novalidate>
       <div ng-class="{'has-error' : shortenForm.$invalid}">
-        <input type='url' class='text' type='text' name='url' ng-model='link.url' placeholder="http://enterWebsite.com">
+        <input type='url' class='text' type='text' name='url' ng-model='SCtrl.link.url' placeholder="http://enterWebsite.com">
       </div>
       <input type='submit' value='Shorten' ng-disabled="shortenForm.$invalid">
   </form>
