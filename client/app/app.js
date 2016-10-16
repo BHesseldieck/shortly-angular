@@ -6,6 +6,7 @@ angular.module('shortly', [
   'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {
+  // Maybe rather use ui-router, because it's the standard: https://ui-router.github.io/tutorial/ng1/helloworld
   $routeProvider
     // .when('/:url', { // Would also work instead of the if statement in run
     //   templateUrl: 'app/links/links.html',
